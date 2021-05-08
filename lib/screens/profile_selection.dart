@@ -6,25 +6,25 @@ class ProfileSelection extends StatefulWidget {
 }
 
 class _ProfileSelectionState extends State<ProfileSelection> {
+  bool selectedShipper = false;
+  bool selectedTransporter = false;
+
+  void makeShipperProfile() {
+    setState(() {
+      selectedTransporter = false;
+      selectedShipper = true;
+    });
+  }
+
+  void makeTransporterProfile() {
+    setState(() {
+      selectedShipper = false;
+      selectedTransporter = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool selectedShipper = false;
-    bool selectedTransporter = false;
-
-    void makeShipperProfile() {
-      setState(() {
-        selectedTransporter = false;
-        selectedShipper = true;
-      });
-    }
-
-    void makeTransporterProfile() {
-      setState(() {
-        selectedShipper = false;
-        selectedTransporter = true;
-      });
-    }
-
     final body = SafeArea(
       child: Container(
         padding: const EdgeInsets.all(20.0),
