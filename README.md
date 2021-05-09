@@ -1,16 +1,12 @@
-# liveasy
+# Liveasy
 
-A new Flutter project.
+## What's Livesy
+Livesy app authenticates user using a phone number. The user will enter a 10 digit phone number then OTP come. It will automatically verify.
 
-## Getting Started
+**Wireframe:** https://www.figma.com/file/pmer88pSeAiUDVVXk9kM4t/Liveasy?node-id=12%3A329
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+<img src="assets/for_readme/mobile_number_001.jpg" height=400>
+<img src="assets/for_readme/verify_phone.jpg" height=400>
+<img src="assets/for_readme/profile_screen.jpg" height=400>
+<img src="assets/for_readme/profile_screen_001.jpg" height=400>

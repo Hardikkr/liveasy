@@ -108,23 +108,24 @@ class VerifyPhone extends StatelessWidget {
                   // ),
                   SizedBox(height: 15),
                   Container(
-                      height: 50,
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      width: double.infinity,
-                      child: OTPTextField(
-                        length: 6,
-                        textFieldAlignment: MainAxisAlignment.spaceAround,
-                        fieldWidth: 40,
-                        fieldStyle: FieldStyle.underline,
-                        style: TextStyle(fontSize: 25),
-                        // onChanged: (pin) {
-                        //   print("Changed: " + pin);
-                        // },
-                        onCompleted: (pin) {
-                          print("Completed: " + pin);
-                          otp = pin;
-                        },
-                      )),
+                    height: 50,
+                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    width: double.infinity,
+                    child: OTPTextField(
+                      length: 6,
+                      textFieldAlignment: MainAxisAlignment.spaceAround,
+                      fieldWidth: 40,
+                      fieldStyle: FieldStyle.underline,
+                      style: TextStyle(fontSize: 25),
+                      // onChanged: (pin) {
+                      //   print("Changed: " + pin);
+                      // },
+                      onCompleted: (pin) {
+                        print("Completed: " + pin);
+                        otp = pin;
+                      },
+                    ),
+                  ),
                   SizedBox(height: 15),
                   RichText(
                     textAlign: TextAlign.center,
