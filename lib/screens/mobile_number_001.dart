@@ -1,7 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:liveasy/screens/verify_phone.dart';
 
-class MobileNumber001 extends StatelessWidget {
+var userVerificationId;
+
+class MobileNumber001 extends StatefulWidget {
+  @override
+  _MobileNumber001State createState() => _MobileNumber001State();
+}
+
+class _MobileNumber001State extends State<MobileNumber001> {
+  TextEditingController phoneNumberController = TextEditingController();
+
+  @override
+  void dispose() {
+    phoneNumberController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final body = SafeArea(
@@ -59,12 +75,13 @@ class MobileNumber001 extends StatelessWidget {
                         ),
                         Expanded(
                           child: TextField(
+                            controller: phoneNumberController,
                             maxLength: 10,
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                               hintText: "Mobile Number",
                               border: InputBorder.none,
-                              counterText: ""
+                              counterText: "",
                             ),
                           ),
                         ),
@@ -75,12 +92,30 @@ class MobileNumber001 extends StatelessWidget {
                   Container(
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => VerifyPhone("9831373910"),
-                          ),
+                      onPressed: () async {
+                        await FirebaseAuth.instance.verifyPhoneNumber(
+                          phoneNumber: '+91' + phoneNumberController.text,
+                          verificationCompleted:
+                              (AuthCredential phoneAuthCredential) async {
+                            print("verificationCompleted");
+                          },
+                          verificationFailed:
+                              (FirebaseAuthException firebaseAuthException) {
+                            print("verificationFailed");
+                            print("${firebaseAuthException.message}");
+                          },
+                          codeSent: (String verificationId, [int forceResend]) {
+                            userVerificationId = verificationId;
+                            print("codeSent");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VerifyPhone(
+                                    "${phoneNumberController.text}"),
+                              ),
+                            );
+                          },
+                          codeAutoRetrievalTimeout: (String verificationId) {},
                         );
                       },
                       style: ElevatedButton.styleFrom(
